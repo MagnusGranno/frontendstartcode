@@ -5,20 +5,20 @@ import { facade } from '../../../apiFacade';
 import { MyBody, Picture, Container } from './First.styles';
 
 function First({ title }) {
-  const [dataFromServer, setDataFromServer] = useState('Loading...');
+  const [dataFromServer, setDataFromServer] = useState([{value: "", url: ""}]);
   useEffect(() => {
     facade
       .fetchAny(jokeUrl)
-      .then((data) => setDataFromServer(data.msg))
+      .then((data) => setDataFromServer(data))
       .catch((error) => {
         console.log(error);
       });
-  }, [dataFromServer]);
+  }, []);
   return (
     <MyBody>
       <div>This is the {title} endpoint 😻 </div>
       <Container>
-        <h3>{dataFromServer}</h3>
+        <h3>{dataFromServer[0].value}</h3>
         <Picture color={'green'}>Picture 1</Picture>
         <Picture color={'red'}>Picture 2</Picture>
         <Picture color={'Blue'}>Picture 3</Picture>
