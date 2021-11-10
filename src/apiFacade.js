@@ -1,5 +1,6 @@
-import { myUrl } from './settings';
+import { myUrl, jokeUrl } from './settings';
 
+const jokeURL = jokeUrl;
 const URL = myUrl;
 function handleHtttpErrors(res) {
   if (!res.ok) {
@@ -29,6 +30,10 @@ function apiFacade() {
   const fetchData = () => {
     const options = makeOptions('GET', true);
     return fetch(URL + `/api/info/user`, options).then(handleHtttpErrors);
+  };
+  const fetchAny = (someUrl) => {
+    const options = makeOptions('GET', true);
+    return fetch(URL + someUrl, options).then(handleHtttpErrors);
   };
   const setToken = (token) => {
     localStorage.setItem('jwtToken', token);
@@ -78,6 +83,7 @@ function apiFacade() {
     logout,
     fetchData,
     handleHtttpErrors,
+    fetchAny,
   };
 }
 export const facade = apiFacade();
