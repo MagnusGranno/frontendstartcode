@@ -1,34 +1,22 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 // Facade
 import { facade } from '../../apiFacade';
 // Styles
-import {
-  Wrapper,
-  Content,
-  Menu,
-  StyledLogout,
-  StyledToggle,
-} from './Header.styles';
-
-//image
-import star from '../../images/star.png';
+import { Wrapper, Content, Menu, StyledLogout } from './Header.styles';
 
 function Header({
   loggedIn,
   setLoggedIn,
   loginCredentials,
   setLoginCredentials,
-  setToggleSideBar,
-  toggleSideBar,
-  myRoles,
 }) {
+  const navigate = useNavigate();
   const logout = () => {
     facade.logout();
     setLoggedIn(false);
     setLoginCredentials({ username: '', password: '' });
-    localStorage.removeItem('username');
-    localStorage.removeItem('roles');
+    navigate('/');
   };
 
   return (
@@ -37,7 +25,8 @@ function Header({
         <h1>StartCode</h1>
         {loggedIn && (
           <h3>
-            🔥 Welcome {localStorage.username} your roles: {myRoles}🔥
+            🔥 Welcome {localStorage.username} your roles:{' '}
+            {localStorage.getItem('roles').split(',').join(', ')}🔥
           </h3>
         )}
         <Menu>
@@ -47,9 +36,6 @@ function Header({
           ) : (
             <StyledLogout onClick={logout}>Logout</StyledLogout>
           )}
-          <StyledToggle onClick={() => setToggleSideBar(!toggleSideBar)}>
-            <img src={star} alt="star" />
-          </StyledToggle>
         </Menu>
       </Content>
     </Wrapper>

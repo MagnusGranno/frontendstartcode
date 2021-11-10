@@ -19,7 +19,7 @@ export const Content = styled.div`
   justify-content: space-between;
 
   h1 {
-    color: #4caf50;
+    color: hsl(var(--secondary-color));
   }
 `;
 
@@ -38,22 +38,4 @@ export const StyledLogout = styled.div`
   cursor: pointer;
   text-align: center;
   justify-content: center;
-`;
-
-export const StyledToggle = styled.div`
-  background-color: hsl(167, 63%, 45%, 0.2);
-  height: 75%;
-  width: 75%;
-  color: black;
-  cursor: pointer;
-  font-size: var(--fs-300);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-
-  img {
-    width: 90%;
-    height: 90%;
-  }
 `;

@@ -40,10 +40,9 @@ const Login = ({ setLoggedIn, loginCredentials, setLoginCredentials }) => {
   const login = (user, pass) => {
     facade.login(user, pass).then(() => {
       setLoggedIn(true);
-      navigate('/');
     });
 
-    localStorage.setItem('username', user);
+    navigate('/');
   };
 
   return (

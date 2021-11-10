@@ -1,5 +1,6 @@
-const URL = 'http://localhost:8080/devops_starter_war_exploded';
+import { myUrl } from './settings';
 
+const URL = myUrl;
 function handleHtttpErrors(res) {
   if (!res.ok) {
     return Promise.reject({ status: res.status, fullError: res.json() });
@@ -18,6 +19,7 @@ function apiFacade() {
       .then(handleHtttpErrors)
       .then((res) => {
         setToken(res.token);
+        localStorage.setItem('username', user);
       });
   };
   const fetchData = () => {
@@ -26,6 +28,13 @@ function apiFacade() {
   };
   const setToken = (token) => {
     localStorage.setItem('jwtToken', token);
+
+    const jwtData = token.split('.')[1];
+    const decodedJwtJsonData = window.atob(jwtData);
+    const decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+    const roles = decodedJwtData.roles;
+    localStorage.setItem('roles', JSON.stringify(roles));
   };
   const getToken = () => {
     return localStorage.getItem('jwtToken');
@@ -36,6 +45,8 @@ function apiFacade() {
   };
   const logout = () => {
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('username');
+    localStorage.removeItem('roles');
   };
 
   const makeOptions = (method, addToken, body) => {

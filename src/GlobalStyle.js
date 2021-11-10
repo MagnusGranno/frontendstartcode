@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   --fs-300: 1rem;
   --fs-200: 0.875rem;
   --primary-color: 0, 0%, 11%;
+  --secondary-color: 122, 39%, 49%;
 }
 
 
@@ -22,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
     margin: 0;
     padding: 0;
+
 
     overflow-y: hidden;
     overflow-x: hidden;
@@ -45,7 +47,7 @@ body {
     padding: 0;
   }
   .active {
-   color: #4caf50;
+   color: hsl(var(--secondary-color));
   }
 }
 

@@ -1,40 +1,38 @@
 // Hooks
 import { useState, useEffect } from 'react';
+
 // Routing
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 // Components
 import Header from './components/Header';
-// Styles
-import { GlobalStyle } from './GlobalStyle';
+import First from './components/Endpoints/First';
+import Second from './components/Endpoints/Second';
+import Third from './components/Endpoints/Third';
+import Fourth from './components/Endpoints/Fourth';
+import Fifth from './components/Endpoints/Fifth';
 import Home from './components/Home';
 import Login from './components/Login';
 import SideBar from './components/SideBar';
 
-const initialState = {
-  username: '',
-  password: '',
-};
+// Styles
+import { GlobalStyle } from './GlobalStyle';
+// Facade
+import { facade } from './apiFacade';
 
 function App() {
+  const initialState = {
+    username: '',
+    password: '',
+  };
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginCredentials, setLoginCredentials] = useState(initialState);
-  const [toggleSideBar, setToggleSideBar] = useState(false);
-  const [myRoles, setMyRoles] = useState('');
 
   useEffect(() => {
-    if (localStorage.getItem('username')) {
+    if (localStorage.getItem('username') && facade.loggedIn) {
       setLoggedIn(true);
-
-      const jwt = localStorage.getItem('jwtToken');
-      const jwtData = jwt.split('.')[1];
-      const decodedJwtJsonData = window.atob(jwtData);
-      const decodedJwtData = JSON.parse(decodedJwtJsonData);
-
-      const roles = decodedJwtData.roles;
-      localStorage.setItem('roles', JSON.stringify(roles));
-      setMyRoles(localStorage.getItem('roles').split(',').join(', '));
     }
-  }, [loggedIn]);
+  }, []);
   return (
     <Router>
       <Header
@@ -42,11 +40,8 @@ function App() {
         loginCredentials={loginCredentials}
         setLoginCredentials={setLoginCredentials}
         setLoggedIn={setLoggedIn}
-        toggleSideBar={toggleSideBar}
-        setToggleSideBar={setToggleSideBar}
-        myRoles={myRoles}
       />
-      {toggleSideBar && <SideBar />}
+      {loggedIn && <SideBar />}
       <Routes>
         <Route exact path="/" element={<Home loggedIn={loggedIn} />} />
         <Route
@@ -60,6 +55,11 @@ function App() {
             />
           }
         />
+        <Route path="/first" element={<First />} />
+        <Route path="/second" element={<Second />} />
+        <Route path="/third" element={<Third />} />
+        <Route path="/fourth" element={<Fourth />} />
+        <Route path="/fifth" element={<Fifth />} />
       </Routes>
       <GlobalStyle />
     </Router>
