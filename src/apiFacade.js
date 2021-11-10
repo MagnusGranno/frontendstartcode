@@ -20,8 +20,12 @@ function apiFacade() {
       .then((res) => {
         setToken(res.token);
         localStorage.setItem('username', user);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   };
+
   const fetchData = () => {
     const options = makeOptions('GET', true);
     return fetch(URL + `/api/info/user`, options).then(handleHtttpErrors);

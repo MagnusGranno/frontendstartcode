@@ -14,7 +14,17 @@ import {
 // Router
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setLoggedIn, loginCredentials, setLoginCredentials }) => {
+const initialState = {
+  username: '',
+  password: '',
+};
+
+const Login = ({
+  loggedIn,
+  setLoggedIn,
+  loginCredentials,
+  setLoginCredentials,
+}) => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
 
@@ -37,12 +47,16 @@ const Login = ({ setLoggedIn, loginCredentials, setLoginCredentials }) => {
     });
   };
 
-  const login = (user, pass) => {
-    facade.login(user, pass).then(() => {
-      setLoggedIn(true);
+  const login = async (user, pass) => {
+    await facade.login(user, pass).then((res) => {
+      setLoggedIn(facade.loggedIn());
+      if (facade.loggedIn()) {
+        navigate('/');
+      } else {
+        setError('Invalid username or password');
+        setLoginCredentials(initialState);
+      }
     });
-
-    navigate('/');
   };
 
   return (
@@ -53,10 +67,13 @@ const Login = ({ setLoggedIn, loginCredentials, setLoginCredentials }) => {
             placeholder="User Name"
             id="username"
             onChange={onChange}
+            value={loginCredentials.username}
           />
           <StyledInput
             placeholder="Password"
+            type="password"
             id="password"
+            value={loginCredentials.password}
             onChange={onChange}
           />
           {error && (

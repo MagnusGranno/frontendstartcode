@@ -25,7 +25,7 @@ function App() {
     username: '',
     password: '',
   };
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(facade.loggedIn);
   const [loginCredentials, setLoginCredentials] = useState(initialState);
 
   useEffect(() => {
