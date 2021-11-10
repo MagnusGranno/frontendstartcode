@@ -3,10 +3,10 @@ import React from 'react';
 // Styles
 import { MyBody } from './First.styles';
 
-function First() {
+function First({ title }) {
   return (
     <MyBody>
-      <div>This is the first endpoint 😻 </div>
+      <div>This is the {title} endpoint 😻 </div>
     </MyBody>
   );
 }
