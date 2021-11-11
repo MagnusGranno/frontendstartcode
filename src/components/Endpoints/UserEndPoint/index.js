@@ -22,12 +22,7 @@ const UserEndPoint = () => {
       },
     });
     const myUsers = await response.json();
-
-    setUsers(
-      myUsers.map((user) => {
-        return user;
-      })
-    );
+    setUsers(myUsers);
   };
   useEffect(() => {
     fetchUsers('https://jsonplaceholder.typicode.com/users');

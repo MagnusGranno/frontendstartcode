@@ -1,34 +1,58 @@
 import React, { useState, useEffect } from 'react';
+// import {Card} from 'react-bootstrap';
 
 // Url
-import { fiveServers } from '../../../settings';
+// import { fiveServers } from '../../../settings';
 
 // Facade
-import { facade } from '../../../apiFacade';
+// import { facade } from '../../../apiFacade';
 
 // Styles
-import { MyBody, Container } from './First.styles';
+import { MyBody, Container, Row } from './First.styles';
+
+
+// const Cards = ({data}) => {
+//   return(
+//     <Card body>
+//       <h4 key={data.id}>{data.title}</h4>
+//     </Card>  
+    
+//   )
+// }
+
 
 function First({ title }) {
-  const [dataFromServer, setDataFromServer] = useState([
-    { value: '', url: '' },
-  ]);
+  
+  const [dataFromServer, setDataFromServer] = useState([]);
+  
+  const fetchUsers = async (URL) => {
+    const response = await fetch(URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const myUsers = await response.json();
+    console.log(myUsers);
+    setDataFromServer(myUsers);
+  };
+  
   useEffect(() => {
-    facade
-      .fetchAny(fiveServers)
-      .then((data) => setDataFromServer(data))
-      .catch((error) => {
-        console.log(error);
-      });
+    fetchUsers('http://localhost:8080/startcode_security_backend_war_exploded/api/reddit/popular');
   }, []);
-  return (
+  
+  return (<>
     <MyBody>
-      <div>This is the {title} endpoint 😻 </div>
       <Container>
-        <h3>{dataFromServer[0].value}</h3>
+          <Row>
+            {dataFromServer.length > 0 && dataFromServer.map((x,i) => (<>
+              
+              <h4>{x.data.title}</h4>
+            </>))}
+          </Row>
       </Container>
     </MyBody>
-  );
+  </>);
 }
 
 export default First;
