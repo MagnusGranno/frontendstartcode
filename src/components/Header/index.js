@@ -25,7 +25,7 @@ function Header({
         <h1>StartCode</h1>
         {loggedIn && (
           <h3>
-            🔥 Welcome {localStorage.username} your roles:{' '}
+            🔥 Welcome {sessionStorage.username} your roles:{' '}
             {sessionStorage.getItem('roles').split(',').join(', ')}🔥
           </h3>
         )}
