@@ -10,11 +10,13 @@ import First from './components/Endpoints/First';
 import Home from './components/Home';
 import Login from './components/Login';
 import SideBar from './components/SideBar';
+import UserEndPoint from './components/Endpoints/UserEndPoint';
 
 // Styles
 import { GlobalStyle } from './GlobalStyle';
 // Facade
 import { facade } from './apiFacade';
+import ChuckJokes from './components/Endpoints/ChuckJokes';
 
 function App() {
   const initialState = {
@@ -25,7 +27,7 @@ function App() {
   const [loginCredentials, setLoginCredentials] = useState(initialState);
 
   useEffect(() => {
-    if (localStorage.getItem('username') && facade.loggedIn) {
+    if (sessionStorage.getItem('username') && facade.loggedIn) {
       setLoggedIn(true);
     }
   }, []);
@@ -51,11 +53,11 @@ function App() {
             />
           }
         />
-        <Route path="/first" element={<First title={"First"}/>} />
-        <Route path="/second" element={<First title={"Second"}/>} />
-        <Route path="/third" element={<First title={"Third"}/>} />
-        <Route path="/fourth" element={<First title={"Fourth"}/>} />
-        <Route path="/fifth" element={<First title={"Fifth"}/>} />
+        <Route path="/first" element={<First title={'First'} />} />
+        <Route path="/users" element={<UserEndPoint />} />
+        <Route path="/chuck" element={<ChuckJokes />} />
+        <Route path="/fourth" element={<First title={'Fourth'} />} />
+        <Route path="/fifth" element={<First title={'Fifth'} />} />
       </Routes>
       <GlobalStyle />
     </Router>

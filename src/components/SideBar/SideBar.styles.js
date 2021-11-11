@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  height: 100%;
+  height: 110vh;
   width: 200px;
   background-color: hsl(var(--primary-color));
   display: flex;
   align-items: center;
   flex-direction: column;
   position: fixed;
-  top: 100px;
+  top: 0;
   left: 0;
   h2 {
     color: hsl(var(--secondary-color));
@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
 export const Content = styled.ul`
   width: 100%;
   height: 100%;
+  margin-top: 100px;
 
   color: #fff;
 `;

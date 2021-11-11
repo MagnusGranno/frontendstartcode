@@ -5,16 +5,16 @@ import { Wrapper, Content, Navs } from './SideBar.styles';
 function SideBar() {
   return (
     <Wrapper>
-      <h2>EndPoints</h2>
       <Content>
+        <h2>EndPoints</h2>
         <Link to="/first">
           <Navs>First Endpoint</Navs>
         </Link>
-        <Link to="/second">
-          <Navs>Second Endpoint</Navs>
+        <Link to="/users">
+          <Navs>Users</Navs>
         </Link>
-        <Link to="/third">
-          <Navs>Third Endpoint</Navs>
+        <Link to="/chuck">
+          <Navs>Chuck Norris Jokes</Navs>
         </Link>
         <Link to="/fourth">
           <Navs>Fourth Endpoint</Navs>

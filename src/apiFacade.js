@@ -1,6 +1,5 @@
-import { myUrl, jokeUrl } from './settings';
+import { myUrl } from './settings';
 
-const jokeURL = jokeUrl;
 const URL = myUrl;
 function handleHtttpErrors(res) {
   if (!res.ok) {
@@ -20,7 +19,7 @@ function apiFacade() {
       .then(handleHtttpErrors)
       .then((res) => {
         setToken(res.token);
-        localStorage.setItem('username', user);
+        sessionStorage.setItem('username', user);
       })
       .catch((error) => {
         console.log(error);
@@ -43,7 +42,7 @@ function apiFacade() {
     const decodedJwtData = JSON.parse(decodedJwtJsonData);
 
     const roles = decodedJwtData.roles;
-    localStorage.setItem('roles', JSON.stringify(roles));
+    sessionStorage.setItem('roles', JSON.stringify(roles));
   };
   const getToken = () => {
     return localStorage.getItem('jwtToken');
@@ -54,8 +53,8 @@ function apiFacade() {
   };
   const logout = () => {
     localStorage.removeItem('jwtToken');
-    localStorage.removeItem('username');
-    localStorage.removeItem('roles');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('roles');
   };
 
   const makeOptions = (method, addToken, body) => {

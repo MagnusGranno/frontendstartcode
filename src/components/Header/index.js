@@ -26,7 +26,7 @@ function Header({
         {loggedIn && (
           <h3>
             🔥 Welcome {localStorage.username} your roles:{' '}
-            {localStorage.getItem('roles').split(',').join(', ')}🔥
+            {sessionStorage.getItem('roles').split(',').join(', ')}🔥
           </h3>
         )}
         <Menu>

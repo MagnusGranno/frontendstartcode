@@ -25,7 +25,7 @@ body {
     padding: 0;
 
 
-    overflow-y: hidden;
+    overflow-y: scroll;
     overflow-x: hidden;
     
     h1 {

@@ -11,7 +11,6 @@ import {
   StyledError,
 } from './Login.styles';
 
-import { MyTableNoHeader } from '../Table';
 // Router
 import { useNavigate } from 'react-router-dom';
 

@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: sticky;
+  z-index: 5;
 `;
 
 export const Content = styled.div`
