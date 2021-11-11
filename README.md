@@ -4,7 +4,7 @@
 
 1. Run "npm i" to install dependencies.
 
-2. Create a "settings.js" file, this is where you'll put all your links
+2. Change / create "settings.js" file, this is where you'll put all your links
    (remember to export/import them)
 
 3. Run "npm run start" or "npm start" to get started with development (remember development server doesnt run as smooth as the finished build)
