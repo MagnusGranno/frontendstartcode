@@ -11,6 +11,9 @@
 
 4. Run "npm run build" to build the finished produkt.
 
+# Routing
+In this project we've used React-Router-6
+
 # Styling
 
 Styling is done with styled components "https://styled-components.com/" and is basicly regular css
