@@ -1,7 +1,11 @@
 import React from 'react';
+
+// Routing
 import { Link } from 'react-router-dom';
 
+// Styles
 import { Wrapper, Content, Navs } from './SideBar.styles';
+
 function SideBar() {
   return (
     <Wrapper>

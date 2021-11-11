@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
+// Url
 import { fiveServers } from '../../../settings';
+
+// Facade
 import { facade } from '../../../apiFacade';
+
 // Styles
 import { MyBody, Container } from './First.styles';
 

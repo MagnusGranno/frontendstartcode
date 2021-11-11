@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-//url
+// Url
 import { chuckURL } from '../../../settings';
-// styles
+
+// Styles
 import { MyBody, JokeButton } from './ChuckJokes.styles';
 
 const ChuckJokes = () => {
@@ -17,15 +18,12 @@ const ChuckJokes = () => {
       },
     });
     const myJoke = await response.json();
-    // console.log(JSON.stringify(myJoke.value));
 
     setJokes([...jokes, myJoke.value]);
-    // allJokes.push(myJoke.value);
   };
 
   const getMeMyJokes = async () => {
     fetchJokes(URL);
-    console.log(jokes);
   };
 
   const resetPage = () => {

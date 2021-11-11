@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+
+// Styles
 import { Content, Wrapper } from './Home.styles';
+
+// Facade
 import { facade } from '../../apiFacade';
 
 function LoggedIn() {

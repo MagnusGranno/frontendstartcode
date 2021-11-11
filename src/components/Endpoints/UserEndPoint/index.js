@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+// Styles
 import { MyBody, MyButton, UserTable } from './UserEndPoint.styles';
 
 const UserEndPoint = () => {
@@ -27,7 +28,6 @@ const UserEndPoint = () => {
         return user;
       })
     );
-    console.log(users);
   };
   useEffect(() => {
     fetchUsers('https://jsonplaceholder.typicode.com/users');
@@ -60,7 +60,7 @@ const UserEndPoint = () => {
         </tbody>
       </UserTable>
       <MyButton onClick={getColor} color={color}>
-        Change my color
+        🎆 Click Me 🧨
       </MyButton>
     </MyBody>
   );

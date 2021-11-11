@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 // Facade
 import { facade } from '../../apiFacade';
+
 // Styles
 import {
   Wrapper,
@@ -19,12 +21,7 @@ const initialState = {
   password: '',
 };
 
-const Login = ({
-  loggedIn,
-  setLoggedIn,
-  loginCredentials,
-  setLoginCredentials,
-}) => {
+const Login = ({ setLoggedIn, loginCredentials, setLoginCredentials }) => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
 

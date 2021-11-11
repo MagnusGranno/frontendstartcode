@@ -1,4 +1,3 @@
-// Hooks
 import { useState, useEffect } from 'react';
 
 // Routing
@@ -11,12 +10,12 @@ import Home from './components/Home';
 import Login from './components/Login';
 import SideBar from './components/SideBar';
 import UserEndPoint from './components/Endpoints/UserEndPoint';
-
+import ChuckJokes from './components/Endpoints/ChuckJokes';
 // Styles
 import { GlobalStyle } from './GlobalStyle';
+
 // Facade
 import { facade } from './apiFacade';
-import ChuckJokes from './components/Endpoints/ChuckJokes';
 
 function App() {
   const initialState = {
@@ -46,7 +45,6 @@ function App() {
           path="/login"
           element={
             <Login
-              loggedIn={loggedIn}
               loginCredentials={loginCredentials}
               setLoginCredentials={setLoginCredentials}
               setLoggedIn={setLoggedIn}

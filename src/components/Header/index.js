@@ -1,16 +1,15 @@
 import React from 'react';
+
+// Routing
 import { NavLink, useNavigate } from 'react-router-dom';
+
 // Facade
 import { facade } from '../../apiFacade';
+
 // Styles
 import { Wrapper, Content, Menu, StyledLogout } from './Header.styles';
 
-function Header({
-  loggedIn,
-  setLoggedIn,
-  loginCredentials,
-  setLoginCredentials,
-}) {
+function Header({ loggedIn, setLoggedIn, setLoginCredentials }) {
   const navigate = useNavigate();
   const logout = () => {
     facade.logout();
