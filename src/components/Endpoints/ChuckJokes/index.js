@@ -18,6 +18,7 @@ const ChuckJokes = () => {
     });
     const myJoke = await response.json();
     // console.log(JSON.stringify(myJoke.value));
+
     setJokes([...jokes, myJoke.value]);
     // allJokes.push(myJoke.value);
   };
@@ -32,14 +33,19 @@ const ChuckJokes = () => {
   };
   return (
     <MyBody>
-      <ul>
-        {jokes.map((joke) => (
-          <li key={Math.floor(Math.random() * 10000)}>{joke}</li>
-        ))}
-      </ul>
+      <div>
+        <h2>Chuck Norris Jokes</h2>
+        <ul>
+          {jokes.map((joke) => (
+            <li key={Math.floor(Math.random() * 10000)}>{joke}</li>
+          ))}
+        </ul>
+      </div>
       <div>
         <JokeButton onClick={getMeMyJokes}>Get me my jokes</JokeButton>
-        <JokeButton onClick={resetPage}>Reset Page</JokeButton>
+        <JokeButton onClick={resetPage} color={'red'}>
+          Reset Page
+        </JokeButton>
       </div>
     </MyBody>
   );
