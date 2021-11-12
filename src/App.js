@@ -10,12 +10,14 @@ import Home from './components/Home';
 import Login from './components/Login';
 import SideBar from './components/SideBar';
 import UserEndPoint from './components/Endpoints/UserEndPoint';
+import SpotifyEndpoint from './components/spotify/SpotifyEndpoint';
 import ChuckJokes from './components/Endpoints/ChuckJokes';
 // Styles
 import { GlobalStyle } from './GlobalStyle';
 
 // Facade
 import { facade } from './apiFacade';
+
 
 function App() {
   const initialState = {
@@ -55,7 +57,7 @@ function App() {
         <Route path="/users" element={<UserEndPoint />} />
         <Route path="/chuck" element={<ChuckJokes />} />
         <Route path="/fourth" element={<First title={'Fourth'} />} />
-        <Route path="/fifth" element={<First title={'Fifth'} />} />
+        <Route path="/spotify" element={<SpotifyEndpoint />} />
       </Routes>
       <GlobalStyle />
     </Router>

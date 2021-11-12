@@ -23,8 +23,8 @@ function SideBar() {
         <Link to="/fourth">
           <Navs>Fourth Endpoint</Navs>
         </Link>
-        <Link to="/fifth">
-          <Navs>Fifth Endpoint</Navs>
+        <Link to="/spotify">
+          <Navs>Spotify Endpoint</Navs>
         </Link>
       </Content>
     </Wrapper>
