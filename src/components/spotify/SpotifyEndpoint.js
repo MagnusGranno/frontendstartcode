@@ -6,7 +6,14 @@ import Listbox from "./spotifyComponents/Listbox";
 import Detail from "./spotifyComponents/Detail";
 import { MyBody, pictureDetails } from "./spotify.styles";
 import { Credentials } from "./spotifyComponents/Credentials";
-import { fetchToken, fetchCategories } from "../../settings";
+import {
+  fetchToken,
+  fetchCategories,
+  fetchSongs1,
+  fetchSongs2,
+  fetchPlayList1,
+  fetchPlayList2,
+} from "../../settings";
 import axios from "axios";
 
 const SpotifyEndpoint = () => {
@@ -83,9 +90,9 @@ const SpotifyEndpoint = () => {
 
   const buttonClicked = (e) => {
     e.preventDefault();
-
+    var linkPlaylist = playlist.selectedPlaylist;
     axios(
-      `https://api.spotify.com/v1/playlists/${playlist.selectedPlaylist}/tracks?limit=100`,
+      `https://api.spotify.com/v1/playlists/${linkPlaylist}/tracks?limit=100`,
       {
         method: "GET",
         headers: {
