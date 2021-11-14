@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 import Dropdown from "./spotifyComponents/Dropdown";
 import Listbox from "./spotifyComponents/Listbox";
 import Detail from "./spotifyComponents/Detail";
-import { MyBody } from "./spotify.styles";
+import { MyBody, pictureDetails } from "./spotify.styles";
 import { Credentials } from "./spotifyComponents/Credentials";
 import { fetchToken, fetchCategories } from "../../settings";
 import axios from "axios";
@@ -83,7 +85,7 @@ const SpotifyEndpoint = () => {
     e.preventDefault();
 
     axios(
-      `https://api.spotify.com/v1/playlists/${playlist.selectedPlaylist}/tracks?limit=15`,
+      `https://api.spotify.com/v1/playlists/${playlist.selectedPlaylist}/tracks?limit=100`,
       {
         method: "GET",
         headers: {

@@ -1,0 +1,5 @@
+.list-group {
+  margin-bottom: 10px;
+  max-height: 490px;
+  overflow-y: scroll;
+}
