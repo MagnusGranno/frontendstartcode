@@ -64,13 +64,10 @@ const SpotifyEndpoint = () => {
       listOfGenresFromAPI: genres.listOfGenresFromAPI,
     });
 
-    axios(
-      `https://api.spotify.com/v1/browse/categories/${val}/playlists?limit=20`,
-      {
-        method: "GET",
-        headers: { Authorization: "Bearer " + token },
-      }
-    ).then((playlistResponse) => {
+    axios(`${fetchPlayList1}${val}${fetchPlayList2}`, {
+      method: "GET",
+      headers: { Authorization: "Bearer " + token },
+    }).then((playlistResponse) => {
       setPlaylist({
         selectedPlaylist: playlist.selectedPlaylist,
         listOfPlaylistFromAPI: playlistResponse.data.playlists.items,
@@ -92,7 +89,7 @@ const SpotifyEndpoint = () => {
     e.preventDefault();
     var linkPlaylist = playlist.selectedPlaylist;
     axios(
-      `https://api.spotify.com/v1/playlists/${linkPlaylist}/tracks?limit=100`,
+      `${fetchSongs1}${linkPlaylist}${fetchSongs2}`,
       {
         method: "GET",
         headers: {
